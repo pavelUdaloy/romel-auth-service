@@ -18,7 +18,17 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation "org.postgresql:postgresql"
+	implementation "io.jsonwebtoken:jjwt-impl:$jwtVersion"
+	implementation "io.jsonwebtoken:jjwt-jackson:$jwtVersion"
+	implementation "org.apache.commons:commons-lang3:$jwtVersion"
+
+	compileOnly "org.projectlombok:lombok"
+
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
