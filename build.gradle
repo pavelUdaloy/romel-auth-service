@@ -24,6 +24,8 @@ dependencies {
 	implementation "io.jsonwebtoken:jjwt-impl:$jwtVersion"
 	implementation "io.jsonwebtoken:jjwt-jackson:$jwtVersion"
 	implementation "org.apache.commons:commons-lang3:$jwtVersion"
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'redis.clients:jedis'
 
 	compileOnly "org.projectlombok:lombok"
 

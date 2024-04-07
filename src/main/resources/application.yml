@@ -28,9 +28,18 @@ spring:
     show-sql: false
   main:
     allow-bean-definition-overriding: true
+  data:
+    redis:
+      port: ${REDIS_PORT:6381}
+      password: ${REDIS_PASSWORD:12345678}
+      host: ${REDIS_HOST:localhost}
 
 jwt:
   key: DEV-JWT-SIGN-KEY_DEV-JWT-SIGN-KEY_DEV-JWT-SIGN-KEY_DEV-JWT-SIGN-KEY
   token-header: Authorization
   token-prefix: "Bearer "
   token-issuer: Romel
+
+token-ttl:
+  access: 3600
+  refresh: 86400

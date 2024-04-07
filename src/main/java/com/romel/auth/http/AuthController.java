@@ -3,7 +3,6 @@ package com.romel.auth.http;
 import com.romel.auth.facade.AuthFacade;
 import com.romel.auth.http.dto.RegisterRequest;
 import com.romel.auth.http.dto.RegisterResponse;
-import com.romel.auth.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AccountService accountService;
     private final AuthFacade authFacade;
 
     @PostMapping("/register")
