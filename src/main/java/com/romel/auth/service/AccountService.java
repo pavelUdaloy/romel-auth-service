@@ -1,6 +1,7 @@
 package com.romel.auth.service;
 
 import com.romel.auth.domain.Account;
+import com.romel.auth.error.BaseRomelException;
 import com.romel.auth.repo.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,10 +17,10 @@ public class AccountService {
     private final AccountRepository accountRepository;
 
     @Transactional
-    public boolean register(String login, String password) {
+    public void register(String login, String password) {
         boolean exists = accountRepository.existsByLogin(login);
         if (exists) {
-            return false;
+            throw new BaseRomelException("User with email " + login + " already exists");
         }
         Account account = new Account();
         account.setLogin(login);
@@ -28,9 +29,8 @@ public class AccountService {
         try {
             accountRepository.save(account);
         } catch (Exception e) {
-            return false;
+            throw new BaseRomelException("Error per saving new user to db");
         }
-        return true;
     }
 
     @Transactional(readOnly = true)

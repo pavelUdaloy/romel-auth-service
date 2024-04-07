@@ -25,11 +25,9 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers(HttpMethod.POST, "/**").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/**").permitAll()
-//                        .requestMatchers(HttpMethod.POST, "/romel/auth/login", "/romel/auth/register").permitAll()
-//                        .requestMatchers(HttpMethod.GET, "/romel/auth/refresh").permitAll()
-//                        .requestMatchers(HttpMethod.GET, "/romel/auth/logout").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/romel/auth/login", "/romel/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/romel/auth/refresh").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/romel/auth/logout").authenticated()
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)

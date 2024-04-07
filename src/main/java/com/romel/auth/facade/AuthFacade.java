@@ -15,11 +15,7 @@ public class AuthFacade {
     private final AccountService accountService;
 
     public RegisterResponse register(String login, String password) {
-        boolean access = accountService.register(login, password);
-
-        if (!access) {
-            throw new RuntimeException("Register error");
-        }
+        accountService.register(login, password);
 
         Pair<String, String> tokens = tokenService.createNewPair(login);
 

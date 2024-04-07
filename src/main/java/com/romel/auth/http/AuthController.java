@@ -27,6 +27,11 @@ public class AuthController {
 
     }
 
+    @GetMapping("/refresh")
+    public void refresh() {
+        System.out.println();
+    }
+
     @GetMapping("/logout")
     public void logout() {
         System.out.println();
