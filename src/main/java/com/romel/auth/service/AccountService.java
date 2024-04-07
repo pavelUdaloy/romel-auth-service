@@ -3,8 +3,11 @@ package com.romel.auth.service;
 import com.romel.auth.domain.Account;
 import com.romel.auth.repo.AccountRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +31,14 @@ public class AccountService {
             return false;
         }
         return true;
+    }
+
+    @Transactional(readOnly = true)
+    public Account findByLogin(String login) {
+        Optional<Account> account = accountRepository.findByLogin(login);
+        if (account.isEmpty()) {
+            throw new UsernameNotFoundException("Cannot find account with login = " + login);
+        }
+        return account.get();
     }
 }

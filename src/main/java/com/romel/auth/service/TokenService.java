@@ -57,9 +57,9 @@ public class TokenService {
     private String createToken(String subject, Long plusSecondsToExpare) {
         String token = Jwts.builder()
                 .signWith(Keys.hmacShaKeyFor(jwtProperties.getKey().getBytes(StandardCharsets.UTF_8)))
-                .issuer(jwtProperties.getTokenIssuer())
-                .subject(subject)
-                .issuedAt(Date.from(Instant.from(LocalDateTime.now().plusSeconds(plusSecondsToExpare))))
+                .setIssuer(jwtProperties.getTokenIssuer())
+                .setSubject(subject)
+                .setIssuedAt(Date.from(Instant.from(LocalDateTime.now().plusSeconds(plusSecondsToExpare))))
                 .claim("account_type", "romel_user")
                 .compact();
 

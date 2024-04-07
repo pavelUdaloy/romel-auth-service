@@ -4,11 +4,14 @@ import com.romel.auth.facade.AuthFacade;
 import com.romel.auth.http.dto.RegisterRequest;
 import com.romel.auth.http.dto.RegisterResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/romel/auth")
+@RestController
+@RequestMapping("/romel/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -24,8 +27,8 @@ public class AuthController {
 
     }
 
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public void logout() {
-
+        System.out.println();
     }
 }
