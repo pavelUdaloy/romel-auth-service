@@ -1,6 +1,6 @@
-FROM amazoncorretto:17
-VOLUME /tmp
+FROM openjdk:17
+WORKDIR /romel-auth-service
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} romel-auth.jar
 EXPOSE 8080
-ARG JAR_FILE=target/spring-boot-docker.jar
-ADD ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","romel-auth.jar"]
