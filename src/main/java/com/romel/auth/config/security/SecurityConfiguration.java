@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/romel/auth/login", "/romel/auth/register").permitAll()
                         .requestMatchers(HttpMethod.GET, "/romel/auth/refresh").permitAll()
                         .requestMatchers(HttpMethod.GET, "/romel/auth/logout").authenticated()
-                                .anyRequest().authenticated()
+                        .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(withDefaults())
