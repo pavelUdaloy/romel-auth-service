@@ -27,6 +27,10 @@ public class AuthController {
 
     }
 
+    @GetMapping("/test")
+    public void test() {
+    }
+
     @GetMapping("/refresh")
     public void refresh() {
         System.out.println();

@@ -26,7 +26,7 @@ public class SecurityConfiguration {
         return http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/romel/auth/login", "/romel/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/romel/auth/refresh").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/romel/auth/refresh", "/romel/auth/test").permitAll()
                         .requestMatchers(HttpMethod.GET, "/romel/auth/logout").authenticated()
                         .anyRequest().authenticated()
                 )

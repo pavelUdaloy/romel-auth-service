@@ -1,7 +1,7 @@
 package com.romel.auth;
 
-import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class RomelAuthApplicationTest {
 }
