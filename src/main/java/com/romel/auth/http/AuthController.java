@@ -23,21 +23,22 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public void login() {
-
+    public String login() {
+        return "login";
     }
 
     @GetMapping("/test")
-    public void test() {
+    public String test() {
+        return "test";
     }
 
     @GetMapping("/refresh")
-    public void refresh() {
-        System.out.println();
+    public String refresh() {
+        return "refresh";
     }
 
     @GetMapping("/logout")
-    public void logout() {
-        System.out.println();
+    public String logout() {
+        return "logout";
     }
 }

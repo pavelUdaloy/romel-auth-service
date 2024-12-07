@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.UUID;
 
@@ -55,11 +56,12 @@ public class TokenService {
     }
 
     private String createToken(String subject, Long plusSecondsToExpare) {
+        LocalDateTime issuedAt = LocalDateTime.now().plusSeconds(plusSecondsToExpare);
         String token = Jwts.builder()
                 .signWith(Keys.hmacShaKeyFor(jwtProperties.getKey().getBytes(StandardCharsets.UTF_8)))
                 .setIssuer(jwtProperties.getTokenIssuer())
                 .setSubject(subject)
-                .setIssuedAt(Date.from(Instant.from(LocalDateTime.now().plusSeconds(plusSecondsToExpare))))
+                .setIssuedAt(Date.from(issuedAt.toInstant(ZoneOffset.UTC)))
                 .claim("account_type", "romel_user")
                 .compact();
 
